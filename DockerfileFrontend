@@ -1,2 +1,6 @@
 FROM node:12.13.0 #latest LTS version
-RUN git clone https://.../
+RUN mkdir -p /work/
+RUN git clone https://github.com/bestwebshop/frontend.git /work/frontend/
+RUN cd /work/frontend && npm install
+RUN cd /work/frontend && npm run start
+EXPOSE 80
