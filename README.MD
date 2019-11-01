@@ -9,7 +9,7 @@ Only these docker files should be cloned directly on the host. The other source 
 ## Updating
 on change of any source code file, use following command to update/recreate the server
 
-```cd /work/docker && git pull && docker rmi --force $(cat docker_images.txt) && docker image prune --force && docker-compose up -d```
+```cd /work/docker && git pull && docker-compose down && docker rmi --force $(cat docker_images.txt) && docker image prune --force && docker-compose up -d```
 
 ## Stopping the Server
 
