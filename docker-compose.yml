@@ -1,0 +1,17 @@
+version: '3.2'
+services:
+  bestwebshop-frontend:
+    build:
+      context: ./
+      dockerfile: ./DockerfileFrontend
+    ports:
+      - "3000:80"
+    networks:
+      local_dev_net:
+          aliases:
+              - bestwebshop-frontend
+
+
+networks:
+  local_dev_net:
+    driver: bridge
