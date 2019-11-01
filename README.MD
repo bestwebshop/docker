@@ -2,10 +2,18 @@
 
 Only these docker files should be cloned directly on the host. The other source code should only exist inside the containers (and inside the repo)
 
-# Installation
+# Usage
+## Installation
 ```mkdir -p /work/ && cd /work/ && git clone https://github.com/bestwebshop/docker.git && cd docker && docker-compose up -d```
 
-# Updating
+## Updating
 on change of any source code file, use following command to update/recreate the server
 
-```cd /work/docker && git pull && docker image prune --force && docker-compose up -d```
+```cd /work/docker && git pull && docker rmi --force $(cat docker_images.txt) && docker image prune --force && docker-compose up -d```
+
+## Stopping the Server
+
+```cd /work/docker && docker-compose down```
+
+# Contributing
+Please note that the file docker_images.txt should contain the names of all docker images that will be created through docker compose (seperated by spaces).
