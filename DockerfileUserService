@@ -1,7 +1,7 @@
 # Build application
 FROM maven:3.6.3-jdk-11-slim as builder
 
-RUN apt update && apt-get install git
+RUN apt update && apt-get install git -y
 
 RUN mkdir -p /api/
 RUN git clone https://github.com/bestwebshop/api.git /api
