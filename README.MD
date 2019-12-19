@@ -7,9 +7,9 @@ Only these docker files should be cloned directly on the host. The other source 
 ```mkdir -p /work/ && cd /work/ && git clone https://github.com/bestwebshop/docker.git && cd docker && docker-compose up -d```
 
 ## Updating
-on change of any source code file, use following command to update/recreate the server
+on change of any source code file, use following command to update/recreate the server (tip: paste this into a `on_change.sh` file)
 
-```cd /work/docker && git pull && docker-compose down && docker rmi --force $(cat docker_images.txt) && docker image prune --force && docker-compose up -d --remove-orphans ```
+```cd /work/docker && git pull && docker-compose down && docker rmi --force $(cat docker_images.txt) $(docker images --filter “dangling=true” -q --no-trunc) && docker image prune --force && docker-compose up -d --remove-orphans```
 
 ## Stopping the Server
 
