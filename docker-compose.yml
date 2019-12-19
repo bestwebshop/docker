@@ -4,7 +4,8 @@ services:
   # User core service
   user-service:
     build:
-      context: ./DockerfileUserService
+      context: .
+      dockerfile: DockerfileUserService
     ports:
       - "9203:8080"
     networks:
