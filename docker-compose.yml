@@ -1,17 +1,81 @@
-version: '3.2'
+version: "3.7"
+
 services:
-  bestwebshop-frontend:
+  # User core service
+  user-service:
+    build:
+      context: ./DockerfileUserService
+    ports:
+      - "9203:8080"
+    networks:
+      - webshop-network
+  #  depends_on:
+  #    - discovery-service
+
+  # Product core service
+  #product-service:
+  #  build:
+  #    context: ./product-service
+  #  ports:
+  #    - "9204:8080"
+  #  networks:
+  #    - webshop-network
+  #  depends_on:
+  #    - discovery-service
+
+  # Category core service
+  #category-service:
+  #  build:
+  #    context: ./category-service
+  #  ports:
+  #    - "9205:8080"
+  #  networks:
+  #    - webshop-network
+  #  depends_on:
+  #    - discovery-service
+
+  # Discovery Service
+  #discovery-service:
+  #  build:
+  #    context: ./eureka-server
+  #  ports:
+  #    - "9200:8080"
+  #  networks:
+  #    - webshop-network
+
+  # Zuul Edge Service
+  #edge-service:
+  #  build:
+  #    context: ./edge-service
+  #  ports:
+  #    - "9201:8080"
+  #  networks:
+  #    - webshop-network
+  #    - client-network
+  #  depends_on:
+  #    - discovery-service
+  #    - user-service
+      #- inventory-service
+
+  #hystrix-service:
+  #  build:
+  #    context: ./monitor-dashboard
+  #  ports:
+  #    - "9207:8080"
+  #  networks:
+  #    - webshop-network
+      
+  frontend-service:
     build:
       context: ./
       dockerfile: ./DockerfileFrontend
     ports:
       - "80:3000"
     networks:
-      local_dev_net:
-          aliases:
-              - bestwebshop-frontend
-
+      client-network
 
 networks:
-  local_dev_net:
+  webshop-network:
+    driver: bridge
+  client-network:
     driver: bridge
