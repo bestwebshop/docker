@@ -1,1 +1,1 @@
-docker_bestwebshop-frontend docker_bestwebshop-api docker_bestwebshop-db docker_user-service
+docker_frontend-service docker_user-service
