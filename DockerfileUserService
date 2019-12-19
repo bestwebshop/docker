@@ -13,7 +13,7 @@ WORKDIR $BUILD_DIR
 RUN cp /api/user-service/pom.xml $BUILD_DIR
 RUN mvn -B dependency:resolve dependency:resolve-plugins
 
-RUN cp -r /api/user-service/src $BUILD_DIR/src/
+RUN cp -r /api/user-service/src/ $BUILD_DIR/src/
 RUN mvn package -DskipTests
 
 
