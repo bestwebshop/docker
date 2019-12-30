@@ -1,1 +1,1 @@
-docker_frontend-service docker_user-service
+docker_core-category-service docker_core-product-service docker_core-user-service docker_discovery-service docker_edge-service docker_frontend docker_hystrix-dashboard-service docker_inventory-service
