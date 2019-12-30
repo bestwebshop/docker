@@ -8,7 +8,12 @@ WORKDIR $BUILD_DIR
 COPY pom.xml $BUILD_DIR
 RUN mvn -B dependency:resolve dependency:resolve-plugins
 
-COPY src $BUILD_DIR/src
+RUN apt update && apt-get install git -y
+
+RUN mkdir -p /repo/
+RUN git clone https://github.com/bestwebshop/hystrix-dashboard-service.git /repo
+
+RUN cp -r /repo/src/ $BUILD_DIR/src/
 RUN mvn package -DskipTests
 
 
