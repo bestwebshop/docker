@@ -2,10 +2,10 @@ version: "3.7"
 
 services:
   # User core service
-  user-service:
+  core-user-service:
     build:
       context: .
-      dockerfile: DockerfileUserService
+      dockerfile: services/core-user-service
     ports:
       - "9203:8080"
     networks:
@@ -14,9 +14,10 @@ services:
   #    - discovery-service
 
   # Product core service
-  #product-service:
+  #core-product-service:
   #  build:
-  #    context: ./product-service
+  #    context: .
+  #    dockerfile: services/core-product-service
   #  ports:
   #    - "9204:8080"
   #  networks:
@@ -25,9 +26,10 @@ services:
   #    - discovery-service
 
   # Category core service
-  #category-service:
+  #core-category-service:
   #  build:
-  #    context: ./category-service
+  #    context: .
+  #    dockerfile: services/core-category-service
   #  ports:
   #    - "9205:8080"
   #  networks:
@@ -35,10 +37,11 @@ services:
   #  depends_on:
   #    - discovery-service
 
-  # Discovery Service
+  # Eureka Discovery Service
   #discovery-service:
   #  build:
-  #    context: ./eureka-server
+  #    context: .
+  #    dockerfile: services/discovery-service
   #  ports:
   #    - "9200:8080"
   #  networks:
@@ -47,7 +50,8 @@ services:
   # Zuul Edge Service
   #edge-service:
   #  build:
-  #    context: ./edge-service
+  #    context: .
+  #    dockerfile: services/edge-service
   #  ports:
   #    - "9201:8080"
   #  networks:
@@ -55,12 +59,13 @@ services:
   #    - client-network
   #  depends_on:
   #    - discovery-service
-  #    - user-service
+  #    - core-user-service
       #- inventory-service
 
-  #hystrix-service:
+  #hystrix-dashboard-service:
   #  build:
-  #    context: ./monitor-dashboard
+  #    context: .
+  #    dockerfile: services/hystrix-dashboard-service
   #  ports:
   #    - "9207:8080"
   #  networks:

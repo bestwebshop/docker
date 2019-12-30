@@ -1,0 +1,1 @@
+This folder contains Dockerfiles used to build their respective micro service containers.
