@@ -1,6 +1,6 @@
-# THIS FOLDER CONTAINS THE DOCKER IMAGES THAT WILL DOWNLOAD SOURCE CODE FROM OTHER REPOS ON THEIR BUILD
+# this repo contains the docker images which are used to download and install the micro services from the other repos
 
-Only these docker files should be cloned directly on the host. The other source code should only exist inside the containers (and inside the repo)
+Only this repo with the docker files should be cloned directly on the host. The other source code should only exist inside the containers (and inside their repos on github)
 
 # Usage
 ## Installation
@@ -12,6 +12,3 @@ on change of any source code file, run `./update.sh` command to update/recreate 
 ## Stopping the Server
 
 ```cd /work/docker && docker-compose down```
-
-# Contributing
-Please note that the file docker_images.txt should contain the names of all docker images that will be created through docker compose (seperated by spaces).
