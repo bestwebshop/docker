@@ -10,66 +10,83 @@ services:
       - "9203:8080"
     networks:
       - webshop-network
-  #  depends_on:
-  #    - discovery-service
+    depends_on:
+      - discovery-service
 
   # Product core service
-  #core-product-service:
-  #  build:
-  #    context: .
-  #    dockerfile: services/core-product-service
-  #  ports:
-  #    - "9204:8080"
-  #  networks:
-  #    - webshop-network
-  #  depends_on:
-  #    - discovery-service
+  core-product-service:
+    build:
+      context: .
+      dockerfile: services/core-product-service
+    ports:
+      - "9204:8080"
+    networks:
+      - webshop-network
+    depends_on:
+      - discovery-service
 
   # Category core service
-  #core-category-service:
-  #  build:
-  #    context: .
-  #    dockerfile: services/core-category-service
-  #  ports:
-  #    - "9205:8080"
-  #  networks:
-  #    - webshop-network
-  #  depends_on:
-  #    - discovery-service
+  core-category-service:
+    build:
+      context: .
+      dockerfile: services/core-category-service
+    ports:
+      - "9205:8080"
+    networks:
+      - webshop-network
+    depends_on:
+      - discovery-service
 
   # Eureka Discovery Service
-  #discovery-service:
-  #  build:
-  #    context: .
-  #    dockerfile: services/discovery-service
-  #  ports:
-  #    - "9200:8080"
-  #  networks:
-  #    - webshop-network
+  discovery-service:
+    build:
+      context: .
+      dockerfile: services/discovery-service
+    ports:
+      - "9200:8080"
+    networks:
+      - webshop-network
+      
+  # Inventory composite service
+  inventory-service:
+    build:
+      context: .
+      dockerfile: services/inventory-service
+    ports:
+      - "9206:8080"
+    networks:
+      - webshop-network
+    depends_on:
+      - discovery-service
+      - product-service
+      - category-service
 
   # Zuul Edge Service
-  #edge-service:
-  #  build:
-  #    context: .
-  #    dockerfile: services/edge-service
-  #  ports:
-  #    - "9201:8080"
-  #  networks:
-  #    - webshop-network
-  #    - client-network
-  #  depends_on:
-  #    - discovery-service
-  #    - core-user-service
-      #- inventory-service
+  edge-service:
+    build:
+      context: .
+      dockerfile: services/edge-service
+    ports:
+      - "9201:8080"
+    networks:
+      - webshop-network
+      - client-network
+    depends_on:
+      - discovery-service
+      - core-user-service
+      - inventory-service
 
-  #hystrix-dashboard-service:
-  #  build:
-  #    context: .
-  #    dockerfile: services/hystrix-dashboard-service
-  #  ports:
-  #    - "9207:8080"
-  #  networks:
-  #    - webshop-network
+  hystrix-dashboard-service:
+    build:
+      context: .
+      dockerfile: services/hystrix-dashboard-service
+    ports:
+      - "9207:8080"
+    networks:
+      - webshop-network
+    depends_on:
+      - discovery-service
+      - inventory-service
       
   frontend-service:
     build:
