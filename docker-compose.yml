@@ -73,7 +73,7 @@ services:
       - client-network
     depends_on:
       - discovery-service
-      - core-user-service
+      - user-service
       - inventory-service
 
   hystrix-dashboard-service:
