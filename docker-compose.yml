@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   # User core service
-  user-service:
+  core-user-service:
     build:
       context: .
       dockerfile: services/core-user-service
@@ -14,7 +14,7 @@ services:
       - discovery-service
 
   # Product core service
-  product-service:
+  core-product-service:
     build:
       context: .
       dockerfile: services/core-product-service
@@ -26,7 +26,7 @@ services:
       - discovery-service
 
   # Category core service
-  category-service:
+  core-category-service:
     build:
       context: .
       dockerfile: services/core-category-service
