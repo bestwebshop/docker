@@ -58,8 +58,8 @@ services:
       - webshop-network
     depends_on:
       - discovery-service
-      - product-service
-      - category-service
+      - core-product-service
+      - core-category-service
 
   # Zuul Edge Service
   edge-service:
@@ -73,7 +73,7 @@ services:
       - client-network
     depends_on:
       - discovery-service
-      - user-service
+      - core-user-service
       - inventory-service
 
   hystrix-dashboard-service:
