@@ -90,8 +90,8 @@ services:
       
   frontend-service:
     build:
-      context: ./
-      dockerfile: ./DockerfileFrontend
+      context: .
+      dockerfile: services/frontend
     ports:
       - "80:3000"
     networks:
