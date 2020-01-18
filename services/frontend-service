@@ -4,4 +4,4 @@ RUN mkdir -p /work/
 RUN git clone https://github.com/bestwebshop/frontend.git /work/frontend/
 RUN cd /work/frontend && npm install && npm run build
 EXPOSE 3000
-ENTRYPOINT cd /work/frontend && serve -s build -l 3000
+ENTRYPOINT cd /work/frontend && npx serve -s build -l 3000
