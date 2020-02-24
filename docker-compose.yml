@@ -75,6 +75,18 @@ services:
       - discovery-service
       - core-user-service
       - inventory-service
+      - authorization-service
+      
+  authorization-service:
+    build:
+      context: .
+      dockerfile: services/oauth-service
+    ports:
+      - "9208:8080"
+    networks:
+      - webshop-network
+    depends_on:
+      - discovery-service
 
   hystrix-dashboard-service:
     build:
