@@ -77,9 +77,9 @@ services:
       - inventory-service
       - authorization-service
     environment: 
-      - AUTH_DOMAIN_NAME: bestwebshop.tech
-      - AUTH_DOMAIN_PORT: 9201
-      - AUTH_DOMAIN_PATH: auth/
+      - AUTH_DOMAIN_NAME=bestwebshop.tech
+      - AUTH_DOMAIN_PORT=9201
+      - AUTH_DOMAIN_PATH=auth/
       
   authorization-service:
     build:
