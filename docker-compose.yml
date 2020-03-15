@@ -75,22 +75,24 @@ services:
       - discovery-service
       - core-user-service
       - inventory-service
-      - authorization-service
+ #     - oauth-service
     environment: 
       - AUTH_DOMAIN_NAME=bestwebshop.tech
+# uncomment the following line to use localhost instead of bestwebshop.tech:
+#      - AUTH_DOMAIN_NAME=localhost
       - AUTH_DOMAIN_PORT=9201
       - AUTH_DOMAIN_PATH=auth/
       
-  authorization-service:
-    build:
-      context: .
-      dockerfile: services/oauth-service
-    ports:
-      - "9208:8080"
-    networks:
-      - webshop-network
-    depends_on:
-      - discovery-service
+  #oauth-service:
+  #  build:
+  #    context: .
+  #    dockerfile: services/oauth-service
+  #  ports:
+  #    - "9208:8080"
+  #  networks:
+  #    - webshop-network
+  #  depends_on:
+  #    - discovery-service
 
   hystrix-dashboard-service:
     build:
